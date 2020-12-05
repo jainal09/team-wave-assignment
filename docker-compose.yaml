@@ -1,0 +1,19 @@
+version: '3'
+services:
+  web:
+    image: django:latest
+    container_name : django
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    expose:
+      - "8000"
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    expose:
+      - "6379"
